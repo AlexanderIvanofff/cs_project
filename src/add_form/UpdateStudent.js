@@ -45,7 +45,7 @@ class UpdateStudent extends React.Component {
                             console.error("Error:", error);
                         });
 
-                }}>Show update student
+                }}>{this.showForm ? "hide": "show"}
                 </button>
                 {this.showForm &&
                 <form

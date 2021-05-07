@@ -14,7 +14,7 @@ class AddTitle extends React.Component {
                 <button onClick={(e) => {
                     this.showForm = !this.showForm
 
-                }}>Show Add Title
+                }}>{this.showForm ? "hide": "show"}
                 </button>
                 {this.showForm &&
                 <form

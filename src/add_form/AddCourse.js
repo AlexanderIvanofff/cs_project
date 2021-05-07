@@ -30,7 +30,7 @@ class AddICourse extends React.Component {
                         });
 
 
-                }}>Show Add Course
+                }}>{this.showForm ? "hide": "show"}
                 </button>
                 {this.showForm &&
                 <form

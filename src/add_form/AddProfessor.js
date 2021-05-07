@@ -31,7 +31,7 @@ class AddProfessor extends React.Component {
                         });
 
 
-                }}>Show Add Professors
+                }}>{this.showForm ? "hide": "show"}
                 </button>
                 {this.showForm &&
                 <form

@@ -1,13 +1,15 @@
-import db
+from ..helpers import db
+from ..models.title import Title
 
 
-class Title:
+class Titles:
     @staticmethod
-    def add_title(key_value: dict):
+    def add_title(data: dict):
         """
         Add title into database
         """
-        db.Database.add("titles", key_value)
+        titles = Title(data.title_name)
+        db.Database.add("titles", titles.db_data())
 
     @staticmethod
     def delete_title(current_id: int):
@@ -22,6 +24,3 @@ class Title:
         Show all title from database
         """
         return db.Database.show_table('titles')
-
-
-title = Title()

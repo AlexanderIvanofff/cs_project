@@ -35,15 +35,15 @@ class App extends React.Component {
             <div className="App">
                 <button onClick={() => {
                     this.getAllProfessorsAndCourses()
-                }}>Load All Professors and Courses
+                }}>All Professors and Courses
                 </button>
                 <button onClick={() => {
                     this.getAllStudentsAndCourses()
-                }}>Load All Students and Courses
+                }}>All Students and Courses
                 </button>
                 <button onClick={() => {
                     this.getTopThreeCourses()
-                }}>Load Top Three Courses
+                }}>Top Three Courses
                 </button>
                 <button onClick={() => {
                     this.getAllCourses()

@@ -255,12 +255,12 @@ module.exports = {
             algorithm: "gzip"
         }),
         new CopyPlugin([
-            { from: "public/manifest.json", to: "./" },
-            { from: "public/favicon.png", to: "./" },
-            { from: "public/favicon.svg", to: "./" }
+            { from: "template/manifest.json", to: "./" },
+            { from: "template/favicon.png", to: "./" },
+            { from: "template/favicon.svg", to: "./" }
         ]),
         new HtmlWebpackPlugin({
-            template: resolve("public", "index.html"),
+            template: resolve("template", "index.html"),
             filename: "index.html",
             files: {
                 css: ["style.css"],

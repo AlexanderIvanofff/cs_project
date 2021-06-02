@@ -193,7 +193,7 @@ module.exports = {
         }
     },
     devServer: {
-        contentBase: resolve("public"),
+        contentBase: resolve("template"),
         noInfo: true,
         open: true,
         compress: true,
@@ -210,6 +210,6 @@ module.exports = {
             filename: "style.css",
             chunkFilename: "[id].css"
         }),
-        new HtmlWebpackPlugin({ template: resolve("public", "index.html") })
+        new HtmlWebpackPlugin({ template: resolve("template", "index.html") })
     ]
 };

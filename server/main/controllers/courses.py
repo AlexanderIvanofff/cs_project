@@ -1,13 +1,15 @@
-import db
+from ..helpers import db
+from ..models.course import Course
 
 
 class Courses:
     @staticmethod
-    def add_courses(key_value: dict):
+    def add_courses(data: dict):
         """
         Add courses into database
         """
-        db.Database.add('courses', key_value)
+        course = Course(data.title, data.credit, data.teacher_id)
+        db.Database.add('courses', course.db_data())
 
     @staticmethod
     def delete_courses(current_id: int):
@@ -22,14 +24,3 @@ class Courses:
         Show all title into database
         """
         return db.Database.show_table("courses")
-
-    @staticmethod
-    def show_top_three_courses():
-        """
-        Displays a list of the first three subjects with
-        the most enrolled students
-        """
-        return db.Database.show_top_three_courses("courses")
-
-
-courses = Courses()

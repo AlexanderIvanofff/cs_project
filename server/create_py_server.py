@@ -3,7 +3,7 @@ from http.server import BaseHTTPRequestHandler, HTTPServer
 import logging
 import json
 
-from main.courses import courses
+from main.controllers.courses import courses
 from main.professors import professor
 from main.students import student
 from main.titles import title

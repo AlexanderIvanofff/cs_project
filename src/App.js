@@ -267,7 +267,6 @@ class App extends React.Component {
             .then(data => {
                 console.log("Success:22222", data);
                 this.current_data = null;
-                this.getChartData();
 
             })
             .catch((error) => {
@@ -413,8 +412,6 @@ class App extends React.Component {
             .then(data => {
                 console.log("Success:22222", data);
                 this.current_data = null;
-                this.addTitle()
-
             })
             .catch((error) => {
                 console.error("Error:", error);

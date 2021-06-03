@@ -5,4 +5,4 @@ class Course:
         self.teacher_id = teacher_id
 
     def db_data(self):
-        return {"title": self.title, "credit": self.credit, "teacher_id": self.teacher_id}
+        return {"title": self.title, "credits": self.credit, "professor_id": self.teacher_id}

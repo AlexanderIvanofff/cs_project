@@ -8,7 +8,7 @@ class Titles:
         """
         Add title into database
         """
-        titles = Title(data.title_name)
+        titles = Title(data["title_name"])
         db.Database.add("titles", titles.db_data())
 
     @staticmethod

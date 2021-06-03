@@ -8,7 +8,7 @@ class Students:
         """
         Add students into database
         """
-        student = Student(data.first_name, data.last_name, data.course_id)
+        student = Student(data["first_name"], data["last_name"], data["course_id"])
         db.Database.add("students", student.db_data())
 
     @staticmethod

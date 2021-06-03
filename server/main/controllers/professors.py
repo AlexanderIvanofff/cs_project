@@ -8,7 +8,7 @@ class Professors:
         """
         Add professor into database
         """
-        professor = Professor(data.first_name, data.last_name)
+        professor = Professor(data["first_name"], data["last_name"])
         db.Database.add('professors', professor.db_data())
 
     @staticmethod

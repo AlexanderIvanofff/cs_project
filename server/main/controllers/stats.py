@@ -1,4 +1,4 @@
-from ..models.stats_model import StatsModel
+from ..models.stats import StatsModel
 
 
 class Stats:

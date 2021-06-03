@@ -1,13 +1,14 @@
 #!/usr/bin/env python3
+import decimal
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import logging
 import json
 
-from main.controllers.courses import courses
-from main.professors import professor
-from main.students import student
-from main.titles import title
-import decimal
+from main.controllers.courses import Courses
+from main.controllers.professors import Professors
+from main.controllers.students import Students
+from main.controllers.titles import Titles
+from main.controllers.stats import Stats
 
 
 class DecimalEncoder(json.JSONEncoder):
@@ -41,7 +42,7 @@ class S(BaseHTTPRequestHandler):
         self._set_response('application/json')
 
         if self.path == '/add_student':
-            student.add_student(json.loads(post_data.decode('utf-8')))
+            Students.add_student(json.loads(post_data.decode('utf-8')))
             value = {
                 'success': True,
             }
@@ -49,7 +50,7 @@ class S(BaseHTTPRequestHandler):
             # "1POST request for {}".format(self.path).encode('utf-8'))
 
         elif self.path == '/delete_student':
-            student.delete_student(json.loads(post_data.decode('utf-8')))
+            Students.delete_student(json.loads(post_data.decode('utf-8')))
             value = {
                 'success': True,
             }
@@ -57,21 +58,21 @@ class S(BaseHTTPRequestHandler):
 
         elif self.path == '/update_student':
             data = json.loads(post_data.decode('utf-8'))
-            student.update(data['course_id'], data['student_id'])
+            Students.update(data['course_id'], data['student_id'])
             value = {
                 'success': True,
             }
             self.wfile.write(json.dumps(value).encode('utf-8'))
 
         elif self.path == '/add_professor':
-            professor.add_professors(json.loads(post_data.decode('utf-8')))
+            Professors.add_professors(json.loads(post_data.decode('utf-8')))
             value = {
                 'success': True,
             }
             self.wfile.write(json.dumps(value).encode('utf-8'))
 
         elif self.path == '/delete_professor':
-            professor.delete_professors(json.loads(post_data.decode('utf-8')))
+            Professors.delete_professors(json.loads(post_data.decode('utf-8')))
             value = {
                 'success': True,
             }
@@ -79,33 +80,33 @@ class S(BaseHTTPRequestHandler):
 
         elif self.path == '/show_all_professors':
             value = {
-                'show_all_professors': professor.show_all_professors()
+                'show_all_professors': Professors.show_all_professors()
             }
             self.wfile.write(json.dumps(value).encode('utf-8'))
 
         elif self.path == '/add_course':
-            courses.add_courses(json.loads(post_data.decode('utf-8')))
+            Courses.add_courses(json.loads(post_data.decode('utf-8')))
             value = {
                 'success': True,
             }
             self.wfile.write(json.dumps(value).encode('utf-8'))
 
         elif self.path == '/delete_course':
-            courses.delete_courses(json.loads(post_data.decode('utf-8')))
+            Courses.delete_courses(json.loads(post_data.decode('utf-8')))
             value = {
                 'success': True,
             }
             self.wfile.write(json.dumps(value).encode('utf-8'))
 
         elif self.path == '/add_title':
-            title.add_title(json.loads(post_data.decode('utf-8')))
+            Titles.add_title(json.loads(post_data.decode('utf-8')))
             value = {
                 'success': True,
             }
             self.wfile.write(json.dumps(value).encode('utf-8'))
 
         elif self.path == '/delete_title':
-            title.delete_title(json.loads(post_data.decode('utf-8')))
+            Titles.delete_title(json.loads(post_data.decode('utf-8')))
             value = {
                 'success': True,
             }
@@ -113,39 +114,39 @@ class S(BaseHTTPRequestHandler):
 
         elif self.path == '/show_all_professors_and_courses':
             value = {
-                'show_all_professors_and_courses': professor.show_all_professors_courses_and_students_count(),
+                'show_all_professors_and_courses': Stats.show_all_professors_courses_and_students_count(),
             }
             self.wfile.write(json.dumps(value).encode('utf-8'))
 
         elif self.path == '/show_all_Students_and_there_courses':
             value = {
-                'show_all_Students_and_there_courses': student.show_all_students_and_there_courses()
+                'show_all_Students_and_there_courses': Stats.show_all_students_and_there_courses()
             }
             self.wfile.write(json.dumps(value).encode('utf-8'))
 
         elif self.path == '/show_top_three_courses':
             value = {
-                'show_top_three_courses': courses.show_top_three_courses()
+                'show_top_three_courses': Stats.show_top_three_courses()
             }
 
             self.wfile.write(json.dumps(value).encode('utf-8'))
 
         elif self.path == '/show_top_three_professors_enrolled_students_in_courses':
             value = {
-                'show_top_three_professors_enrolled_students_in_courses': professor.show_top_three_professors_enrolled_students_in_courses()
+                'show_top_three_professors_enrolled_students_in_courses': Stats.show_top_three_professors_enrolled_students_in_courses()
             }
             self.wfile.write(json.dumps(value).encode('utf-8'))
 
         elif self.path == '/show_all_courses':
 
             value = {
-                'show_all_courses': courses.show_all_courses()
+                'show_all_courses': Courses.show_all_courses()
             }
             self.wfile.write(json.dumps(value).encode('utf-8'))
 
         elif self.path == '/show_all_titles':
             value = {
-                'show_all_titles': title.show_all_titles()
+                'show_all_titles': Titles.show_all_titles()
             }
             self.wfile.write(json.dumps(value).encode('utf-8'))
 

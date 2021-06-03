@@ -36,7 +36,6 @@ class AddTitle extends React.Component {
                         placeholder={"title name"}
                         ref={(ref) => {
                             this.title_name = ref;
-
                         }}
                     />
                     <button type={"submit"}>add title</button>

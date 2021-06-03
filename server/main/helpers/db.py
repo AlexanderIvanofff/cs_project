@@ -60,4 +60,3 @@ class Database:
         )
 
         return my_cursor.fetchall()
-

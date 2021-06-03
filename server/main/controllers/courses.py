@@ -8,7 +8,7 @@ class Courses:
         """
         Add courses into database
         """
-        course = Course(data.title, data.credit, data.teacher_id)
+        course = Course(data["title"], data["credits"], data["professor_id"])
         db.Database.add('courses', course.db_data())
 
     @staticmethod

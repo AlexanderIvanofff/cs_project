@@ -45,7 +45,7 @@ class AddIStudent extends React.Component {
                             last_name: this.last_name.value,
                             course_id: this.course_id.value
                         });
-                        this.first_name.value -= "";
+                        this.first_name.value = "";
                         this.last_name.value = "";
                     }}>
 

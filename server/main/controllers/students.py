@@ -15,4 +15,3 @@ class Students:
     @staticmethod
     def update(course_id: int, student_id: int):
         model.update(course_id, student_id)
-        # db.Database.edit('students', 'course_id', course_id, student_id)

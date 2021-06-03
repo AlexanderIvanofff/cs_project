@@ -14,9 +14,6 @@ from main.controllers.stats import Stats
 class DecimalEncoder(json.JSONEncoder):
     def default(self, o):
         if isinstance(o, decimal.Decimal):
-            # wanted a simple yield str(o) in the next line,
-            # but that would mean a yield on the line with super(...),
-            # which wouldn't work (see my comment below), so...
             return (str(o) for o in [o])
         return super(DecimalEncoder, self).default(o)
 
@@ -25,7 +22,6 @@ class S(BaseHTTPRequestHandler):
     def _set_response(self, contentType='text/html'):
         self.send_response(200)
         self.send_header('Access-Control-Allow-Origin', '*')
-        # SimpleHTTPRequestHandler.end_headers(self)
         self.send_header('Content-type', contentType)
         self.end_headers()
 
@@ -35,8 +31,8 @@ class S(BaseHTTPRequestHandler):
         self.wfile.write(bytes(open('index.html'.format(self.path)).read(), 'utf-8'))
 
     def do_POST(self):
-        content_length = int(self.headers['Content-Length'])  # <--- Gets the size of data
-        post_data = self.rfile.read(content_length)  # <--- Gets the data itself
+        content_length = int(self.headers['Content-Length'])
+        post_data = self.rfile.read(content_length)
         print(post_data.decode('utf-8'))
 
         self._set_response('application/json')
@@ -47,7 +43,6 @@ class S(BaseHTTPRequestHandler):
                 'success': True,
             }
             self.wfile.write(json.dumps(value).encode('utf-8'))
-            # "1POST request for {}".format(self.path).encode('utf-8'))
 
         elif self.path == '/delete_student':
             Students.delete_student(json.loads(post_data.decode('utf-8')))

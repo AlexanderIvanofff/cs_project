@@ -1,26 +1,17 @@
-from ..helpers import db
-from ..models.title import Title
+from ..models.title_models import TitleModel
+
+model = TitleModel()
 
 
 class Titles:
     @staticmethod
     def add_title(data: dict):
-        """
-        Add title into database
-        """
-        titles = Title(data["title_name"])
-        db.Database.add("titles", titles.db_data())
+        model.add(data)
 
     @staticmethod
     def delete_title(current_id: int):
-        """
-        Delete title from database
-        """
-        db.Database.delete("titles", current_id)
+        model.delete_title(current_id)
 
     @staticmethod
     def show_all_titles():
-        """
-        Show all title from database
-        """
-        return db.Database.show_table('titles')
+        return model.show_all_titles()

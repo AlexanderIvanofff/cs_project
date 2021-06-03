@@ -45,8 +45,8 @@ class AddICourse extends React.Component {
                             credits: this.credits.value,
                             professor_id: this.professor_id.value
                         });
-                        this.first_name.value = "";
-                        this.last_name.value = "";
+                        this.title.value = "";
+                        this.credits.value = "";
                     }}>
 
                     <input

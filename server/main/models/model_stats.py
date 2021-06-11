@@ -4,7 +4,7 @@ from string import Template
 
 class StatsModel:
     @staticmethod
-    def show_top_three_courses(table):
+    def get_top_courses(table):
         my_cursor = mydb.cursor()
         sql_two = Template(
             "SELECT courses.title, count(students.course_id) AS number_f_courses "
@@ -17,7 +17,7 @@ class StatsModel:
         return my_cursor.fetchall()
 
     @staticmethod
-    def show_all_students_and_there_courses(table):
+    def get_all_students_and_there_courses(table):
         my_cursor = mydb.cursor()
         sql_two = Template(
             "SELECT students.*, courses.* "
@@ -29,7 +29,7 @@ class StatsModel:
         return my_cursor.fetchall()
 
     @staticmethod
-    def show_all_professors_courses_and_students_count(table):
+    def get_all_professors_courses_and_students_count(table):
         my_cursor = mydb.cursor()
         sql_two = Template(
             "SELECT professors.*, courses.*, students.*, COUNT(*) "
@@ -42,7 +42,7 @@ class StatsModel:
         return my_cursor.fetchall()
 
     @staticmethod
-    def show_top_three_professors_enrolled_students_in_courses(table):
+    def get_top_professors_enrolled_students_in_courses(table):
         my_cursor = mydb.cursor()
         sql_two = Template(
             "SELECT students.first_name, courses.title, professors.*, count(students.course_id) AS number_f_courses "

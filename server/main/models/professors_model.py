@@ -7,8 +7,8 @@ class ProfessorModel:
         """
         Add professor into database
         """
-        course = Professor(data['first_name'], data["last_name"])
-        return db.Database.add('professors', course.db_data())
+        professor = Professor(data['first_name'], data["last_name"])
+        return db.Database.add('professors', professor.db_data())
 
     @staticmethod
     def delete(current_id):
